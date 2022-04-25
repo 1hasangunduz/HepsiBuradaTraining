@@ -46,56 +46,47 @@ public class HepsiBuradaHomePage extends SeleniumBasePage {
     WebElement btnSearch;
 
 
-
     /**
      * @param addUrlPlugin : /payment, /account  gibi sayfalara direkt gitmek için kullanılabilir.
      * @return
      */
-    public HepsiBuradaHomePage navigateToUrl(String addUrlPlugin) throws InterruptedException {
+    public HepsiBuradaHomePage navigateToUrl(String addUrlPlugin) {
 
         DriverManager.getDriver().get("http://www.hepsiburada.com/" + addUrlPlugin);
         Log.pass("HepsiBurada Web sitesi açıldı.");
-        Thread.sleep(3000);
         Response response = RestAssured.get("http://www.hepsiburada.com/");
         Log.pass(response.getStatusCode());
         return this;
     }
 
     public HepsiBuradaHomePage btnLogin() throws InterruptedException {
-Thread.sleep(4000);
+
         btnLoginHeader.click();
         Log.pass("Header kısmındaki ; Giriş yap butonuna tıklandı.");
-        //Thread.sleep(3000);
-        //scrollToElement(btnLoginHeader);
-        //scrollToElement(btnLoginDetails);
-        btnLoginDetails.click();
-        Log.pass("Giriş yap alanına tıkladıktan sonra; Liste içerisinde giriş yap butonuna tıklandı.");
         Thread.sleep(2000);
+        btnLoginDetails.click();
+        Thread.sleep(2000);
+        Log.pass("Giriş yap alanına tıkladıktan sonra; Liste içerisinde giriş yap butonuna tıklandı.");
+
         return this;
 
     }
 
     public HepsiBuradaHomePage inputLoginData(String email, String password) throws InterruptedException {
+
         inputEmail.sendKeys(email);
         Log.pass("Email adresi girildi: " + email);
+
         btnLoginEmailArea.click();
         Log.pass("Giriş yap butonuna email text giriş sayfasında tıklandı.");
-        Thread.sleep(3000);
+
+        Thread.sleep(2000);
+
         inputPassword.sendKeys(password);
         Log.pass("Kullanıcı şifresi girildi.");
+
         btnLoginPasswordArea.click();
         Log.pass("Giriş yap butonuna password sayfasında tıklandı.");
-        Thread.sleep(3000);
-
-        return this;
-
-    }
-    public HepsiBuradaHomePage searchBox(String textProductName) {
-
-        inputSearchBox.sendKeys(textProductName);
-        Log.pass("Aranacak ürün: "+ textProductName);
-        btnSearch.click();
-        Log.pass("ARA butonuna tıklandı.");
 
         return this;
 

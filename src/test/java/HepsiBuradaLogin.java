@@ -1,7 +1,6 @@
 import com.basepages.BaseTest;
 import com.data.GetData;
 import com.testpages.HepsiBuradaHomePage;
-import com.testpages.HepsiBuradaSearchPage;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Story;
@@ -12,9 +11,9 @@ import org.testng.annotations.Test;
 public class HepsiBuradaLogin extends BaseTest {
 
 
-    @Epic("Trendyol'da; Kayıtlı kullanıcı ile login olma.")
+    @Epic("HepsiBurada'da; Kayıtlı kullanıcı ile login olma.")
     @Story("Kullanıcının 'Giriş yap' butonuna tıklayıp, Login işlemlerini gerçekleştirmesi beklenir.")
-    @Description("Navigate olunur, Üyelik tabına gidilir ve Email, Password, checkBox ve Gender alanları doldurulup işaretlenir.")
+    @Description("Navigate olunur, Giriş yap tabına gidilir ve Email, Password alanları doldurulup login olunur.")
     @Test
     @Parameters({"addUrlPlugin", "textProductName"})
     public void HepsiBuradaTestCase(@Optional("") String addUrlPlugin,
@@ -23,17 +22,7 @@ public class HepsiBuradaLogin extends BaseTest {
         new HepsiBuradaHomePage()
                 .navigateToUrl(addUrlPlugin)
                 .btnLogin()
-                .inputLoginData(GetData.LOGIN_DATA.EMAIL.value, GetData.LOGIN_DATA.PASSWORD.value)
-
-
-                .searchBox(textProductName)
-        ;
-        new HepsiBuradaSearchPage()
-                .selectCategoryItem()
-                .selectProduct()
-                .goToMyFovites()
-                .checkMyFavoritesProduct()
-        ;
+                .inputLoginData(GetData.LOGIN_DATA.EMAIL.value, GetData.LOGIN_DATA.PASSWORD.value);
 
     }
 }

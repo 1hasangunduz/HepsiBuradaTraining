@@ -11,9 +11,10 @@ import java.util.List;
 
 public class SeleniumBasePage {
 
-    public WebDriver driver;
+    //Eğer login olabilseydim burayı kullanmak işimi kolaylaştıracaktı.
 
-    //Elementeleri merkeze alarak scroll eder.
+    public WebDriver driver=DriverManager.getDriver();
+
     public void scrollToElementBlockCenter(WebElement element, String whereToScroll) {
 
         try {

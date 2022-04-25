@@ -3,9 +3,9 @@ package com.data;
 public class GetData {
 
     public enum LOGIN_DATA {
-
-        EMAIL(""),
-        PASSWORD("");
+//TODO buraya kişisel giriş bilgileri girilmeldir.
+        EMAIL("USER@gmail.com"),
+        PASSWORD("USERPASSWORD");
 
         public String value;
 
